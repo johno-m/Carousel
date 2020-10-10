@@ -2,9 +2,10 @@ const carousel = document.getElementById("carousel")
 
 let slide1, slide2, imageList, currentSlide = 0, newSlide, oldSlide, dotsContainer
 
+/** Initial function */
 function loadCarousel(page = 0, per_page = 20){
     carousel.innerHTML = ''
-    // load images
+    // load images from Pexels API
     getData(`https://api.pexels.com/v1/curated/?page=${page}&per_page=${per_page}`)
         .then(data => {
             imageList = data.photos
@@ -28,7 +29,7 @@ function constructCarousel(target){
     const sliderControls = document.createElement('div')
     const controlsTop = document.createElement('div')
     const controlsBottom = document.createElement('div')
-    dotsContainer = document.createElement('div')
+    dotsContainer = document.createElement('div') // global variable
 
     // Set classes
     cont.classList.add("carousel-container")
@@ -49,8 +50,8 @@ function constructCarousel(target){
     nextBtn.id = "next-btn"
 
     slide1.style.backgroundImage = `url('${imageList[currentSlide].src.large}')`
-    prevBtn.innerHTML = addButton('prev')
-    nextBtn.innerHTML = addButton('next')
+    prevBtn.innerHTML = addButton('prev') // addButton() returns an SVG
+    nextBtn.innerHTML = addButton('next') // addButton() returns an SVG
 
     // Append to DOM
     cont.appendChild(slide1)
@@ -114,6 +115,7 @@ function addButton(option){
     }
 }
 
+/** Click handling function */
 function slideButtonClick(direction){
     let imageWidth = carousel.offsetWidth
     /** To x for outgoing slide */
@@ -140,7 +142,6 @@ function slideButtonClick(direction){
     if(newSlide == slide1){
         newSlide = slide2
         oldSlide = slide1
-        
     } else {
         newSlide = slide1
         oldSlide = slide2
@@ -150,8 +151,6 @@ function slideButtonClick(direction){
     console.log("next image is "+imageList[currentSlide].url)
     setActiveDot()   
     animateSlides(direction)
-
-    //slide in
 }
 
 /** Load 20 images from Pexels API */ 
@@ -162,7 +161,7 @@ async function getData(url = '') {
     }
 }
 
-/**  */
+/** Function to deal with slide animations */
 function animateSlides(direction){
     let imageWidth = carousel.offsetWidth
     let from
