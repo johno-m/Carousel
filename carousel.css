@@ -1,0 +1,94 @@
+#carousel {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: black;
+}
+
+#slider-controls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.controls-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.controls-narrow {
+    flex: 0 0 50px;
+}
+
+.controls-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.slide-btn {
+    margin: 20px;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 66%;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    animation-fill-mode: forwards;
+}
+
+.contain {
+    background-size: contain;
+}
+
+.cover {
+    background-size: cover;
+}
+
+#slide-1 {
+    top: 0px;
+    left: 0px;
+    animation-fill-mode: forwards; 
+}
+
+#slide-2 {
+    top: 0px;
+    left: 100%;
+    animation-fill-mode: forwards; 
+}
+
+.dots-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.dot {
+    margin: 5px 8px;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: #cccccc;
+    transition: 1s;
+    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.activeDot {
+    background-color: #ffffff;
+    transform: scale(1.5);
+}
